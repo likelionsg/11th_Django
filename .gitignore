@@ -176,3 +176,6 @@ cython_debug/
 # pipenv(가상환경) 관련 파일
 Pipfile
 Pipfile.lock
+
+# migration 파일
+**/migrations
