@@ -179,3 +179,6 @@ Pipfile.lock
 
 # migration 파일
 **/migrations
+
+# DS_Store 파일
+**/.DS_Store
