@@ -32,8 +32,8 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">My Shopping List</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">쇼핑할 물건의 목록을 반환하는 페이지입니다</p>                    </p>
+                    <h1 class="display-4 fw-bolder">Detail Page</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">쇼핑할 물건의 상세 정보를 반환하는 페이지입니다</p>                    </p>
                 </div>
             </div>
         </header>
@@ -41,9 +41,7 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    {% for item in item_list %}
                     <div class="col mb-5">
-                        <a href="{% url 'detail_page' item.pk %}">
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
@@ -55,18 +53,13 @@
                                     <!-- Product price-->
                                     {{ item.price }}<br>
                                     {{ item.count }}<br>
-                                    {{ item.store }}<br>
-                                    {{ item.pk }}<br>
                                     <hr>
-                                    {{ item.store.pk }}<br>
-                                    {{ item.store.name }}<br>
+                                    {{ item.store }}<br>
                                     {{ item.store.address }}
                                 </div>
                             </div>
                         </div>
-                        </a>
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </section>
