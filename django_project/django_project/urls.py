@@ -19,5 +19,6 @@ from shopping import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.shopping_list),
+    path('', views.shopping_list, name='list_page'),
+    path('<int:pk>/', views.detail, name='detail_page'),
 ]
