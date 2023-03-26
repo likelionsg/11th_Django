@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
-def index(request):
+def shopping_list(request):
     return render(request, 'index.html')
