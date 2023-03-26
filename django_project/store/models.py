@@ -5,3 +5,4 @@ class Store(models.Model):
         return self.name
     
     name = models.CharField(max_length=50)
+    address = models.CharField(max_length=200)
