@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Store List</h1>
+            <p class="lead fw-normal text-white-50 mb-0">구입처의 목록을 반환하는 페이지입니다</p>
+            </p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for store in store_list %}
+            <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Store image-->
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <!-- Store details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Store name-->
+                                <h5 class="fw-bolder">{{ store.name }}</h5>
+                                <!-- Store address-->
+                                {{ store.address }}
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
