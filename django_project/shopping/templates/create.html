@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="{% url 'create' %}" method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="name">아이템 이름</label><br/>
+        <input type="text" name="name" id="name">
+    </div>
+    <div>
+        <label for="count">개수</label><br/>
+        <input type="number" name="count" id="count">
+    </div>
+    <div>
+        <label for="price">가격</label><br/>
+        <input type="number" name="price" id="price">
+    </div>
+    <div>
+        <label for="store">구입처</label><br/>
+        <input type="text" name="store" id="store">
+    </div>
+    <input type="submit" value="item 생성하기">
+</form>
+{% endblock %}

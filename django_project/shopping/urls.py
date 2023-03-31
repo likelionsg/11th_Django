@@ -4,4 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.shopping_list, name='list_page'),
     path('<int:pk>/', views.detail, name='detail_page'),
+    # html form 을 이용해 쇼핑 아이템(Shopping) 객체 만들기
+    path('create/', views.create, name='create'),
 ]
