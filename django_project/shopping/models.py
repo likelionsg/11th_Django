@@ -9,4 +9,5 @@ class Shopping(models.Model): # django의 Model class를 상속받음
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     count = models.IntegerField()
     price = models.IntegerField()
+    image = models.ImageField(blank=True, upload_to='shopping/')
 
