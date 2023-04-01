@@ -7,3 +7,9 @@ class ShoppingForm(forms.Form):
     count = forms.IntegerField()
     price = forms.IntegerField()
     store = forms.CharField()
+
+class ShoppingModelForm(forms.ModelForm):
+    class Meta:
+        model = Shopping
+        fields = '__all__'
+        # fields = ['name', 'price']
