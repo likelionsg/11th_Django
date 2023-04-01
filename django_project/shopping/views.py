@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Shopping
 from store.models import Store
+from .forms import ShoppingForm
 
 def shopping_list(request):
     qs = Shopping.objects.all()
@@ -21,3 +22,20 @@ def create(request):
         item.store = get_object_or_404(Store, name=store_name)
         item.save()
     return render(request, 'create.html')
+
+def formcreate(request):
+    if request.method == 'POST':
+        form = ShoppingForm(request.POST)
+        if form.is_valid():
+            item = Shopping()
+            item.name = form.cleaned_data['name']
+            item.price = form.cleaned_data['price']
+            item.count = form.cleaned_data['count']
+            store_name = form.cleaned_data['store']
+            item.store = get_object_or_404(Store, name=store_name)
+            item.save()
+            return redirect('list_page')
+    else:
+        form = ShoppingForm()
+    return render(request, 'form_create.html', {'form':form})
+
