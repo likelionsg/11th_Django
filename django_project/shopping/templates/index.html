@@ -16,7 +16,7 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             {% for item in item_list %}
             <div class="col mb-5">
-                <a href="{% url 'detail_page' item.pk %}">
+                <a style="color:inherit; text-decoration:none;" href="{% url 'detail_page' item.pk %}">
                     <div class="card h-100">
                         <!-- Product image-->
                         {% if item.image %}
