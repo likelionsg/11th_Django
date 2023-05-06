@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="{% url 'create' %}" method="POST">
+<form action="{% url 'create' %}" method="POST" style="background-color: white;">
     {% csrf_token %}
     <div>
         <label for="name">아이템 이름</label><br/>

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="" method="POST">
+<form action="" method="POST" style="background-color: white;">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
