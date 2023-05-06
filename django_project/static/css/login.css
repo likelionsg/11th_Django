@@ -1,0 +1,22 @@
+#skhform {
+    border : 2px solid #eee;
+    border-radius: 15px;
+    padding: 50px;
+}
+#skhform input {
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    text-indent: 10px;
+}
+#skhbutton {
+    background-color: rgba(255, 128, 0, 0.7);
+    color:white;
+    border: none;
+    border-bottom: 4px solid rgba(255,128,0,1);
+}
+#skhbutton:active{
+    border-bottom: none;
+    border-top: 4px solid white;
+}
