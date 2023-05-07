@@ -26,3 +26,7 @@ def signup(request):
         auth.login(request, user)
         return redirect('list_page')
     return render(request, 'signup.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('list_page')
