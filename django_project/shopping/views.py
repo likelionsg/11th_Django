@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Shopping
 from store.models import Store
 from .forms import ShoppingForm, ShoppingModelForm
@@ -39,6 +40,7 @@ def formcreate(request):
         form = ShoppingForm()
     return render(request, 'form_create.html', {'form':form})
 
+@login_required
 def modelformcreate(request):
     if request.method == 'POST':
         form = ShoppingModelForm(request.POST)
