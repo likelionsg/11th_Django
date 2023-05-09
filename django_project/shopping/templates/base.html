@@ -30,6 +30,8 @@
                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a></li>
                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'sign-up' %}">SignUp</a></li>
                         {% endif %}
+                        {% block search %}
+                        {% endblock %}
                     </ul>
                 </div>
             </div>
