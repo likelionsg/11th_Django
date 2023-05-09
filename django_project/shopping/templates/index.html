@@ -6,6 +6,17 @@
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">My Shopping List</h1>
             <p class="lead fw-normal text-white-50 mb-0">쇼핑할 물건의 목록을 반환하는 페이지입니다</p>
+            <br>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  정렬기준
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="?sorting=descending-price">높은 가격 순</a></li>
+                  <li><a class="dropdown-item" href="?sorting=ascending-price">낮은 가격 순</a></li>
+                  <li><a class="dropdown-item" href="?sorting=name">이름</a></li>
+                </ul>
+              </div>
             </p>
         </div>
     </div>
@@ -50,7 +61,7 @@
         <!-- 이전페이지 -->
         {% if paginated_list.has_previous %} 
             <li class="page-item">
-                <a class="page-link" href="?page={{ paginated_list.previous_page_number }}" aria-label="Previous">
+                <a class="page-link" href="?page={{ paginated_list.previous_page_number }}&sorting={{ sorting }}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
@@ -61,18 +72,18 @@
         {% for page_number in paginated_list.paginator.page_range %}
             {% if page_number == paginated_list.number %} 
                 <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    <a class="page-link" href="?page={{ page_number }}&sorting={{ sorting }}">{{ page_number }}</a>
                 </li>
             {% else %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    <a class="page-link" href="?page={{ page_number }}&sorting={{ sorting }}">{{ page_number }}</a>
                 </li>
             {% endif %}
         {% endfor %}
         <!-- 다음페이지 -->
         {% if paginated_list.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ paginated_list.next_page_number }}" aria-label="Next">
+                <a class="page-link" href="?page={{ paginated_list.next_page_number }}&sorting={{ sorting }}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>

@@ -6,11 +6,17 @@ from .forms import ShoppingForm, ShoppingModelForm
 from django.core.paginator import Paginator
 
 def shopping_list(request):
-    qs = Shopping.objects.all()
+    sort_criteria = request.GET.get('sorting', 'descending-price')
+    if sort_criteria == 'descending-price':
+        qs = Shopping.objects.order_by('-price')
+    elif sort_criteria == 'ascending-price':
+        qs = Shopping.objects.order_by('price')
+    elif sort_criteria == 'name':
+        qs = Shopping.objects.order_by('name')
     page = request.GET.get('page', '1')
     paginator = Paginator(qs, '2') #Paginator(분할될 객체, 페이지 당 담길 객체수)
     paginated_qs = paginator.get_page(page)
-    return render(request, 'index.html', {'paginated_list': paginated_qs})
+    return render(request, 'index.html', {'paginated_list': paginated_qs, 'sorting': sort_criteria})
 
 def detail(request, pk):
     item = get_object_or_404(Shopping, pk=pk)
