@@ -18,6 +18,11 @@ def shopping_list(request):
     paginated_qs = paginator.get_page(page)
     return render(request, 'index.html', {'paginated_list': paginated_qs, 'sorting': sort_criteria})
 
+def search(request):
+    oq = request.POST['search']
+    qs = Shopping.objects.filter(name__contains=oq)
+    return render(request,'search.html', {'item_list': qs})
+
 def detail(request, pk):
     item = get_object_or_404(Shopping, pk=pk)
     return render(request, 'detail.html', {'item':item,})
