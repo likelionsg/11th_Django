@@ -1,4 +1,13 @@
 {% extends "base.html" %}
+
+{% block search %}
+<form action="{% url 'search_item' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="search" placeholder="Search">
+    <input type="submit" value="검색">
+</form>
+{% endblock %}
+
 {% block content %}
 <!-- Header-->
 <header class="bg-dark py-5" style="background-color: whites;">

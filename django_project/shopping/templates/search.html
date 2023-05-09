@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block search %}
+<form action="{% url 'search_item' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="search" placeholder="Search">
+    <input type="submit" value="검색">
+</form>
+{% endblock %}
+
+{% block content %}
+<!-- Header-->
+<header class="bg-dark py-5" style="background-color: whites;">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Search</h1>
+            <p class="lead fw-normal text-white-50 mb-0">검색 결과를 반환하는 페이지입니다</p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5" style="background-color: white;">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for item in item_list %}
+            <div class="col mb-5">
+                <a style="color:inherit; text-decoration:none;" href="{% url 'detail_page' item.pk %}">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        {% if item.image %}
+                        <img class="card-img-top" src="{{ item.image.url }}" alt="..." />
+                        {% else %}
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        {% endif %}
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{ item.name }}</h5>
+                                <!-- Product price-->
+                                {{ item.price }}<br>
+                                {{ item.count }}<br>
+                                {{ item.store }}<br>
+                                {{ item.pk }}<br>
+                                <hr>
+                                {{ item.store.pk }}<br>
+                                {{ item.store.name }}<br>
+                                {{ item.store.address }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

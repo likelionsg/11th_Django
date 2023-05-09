@@ -4057,6 +4057,7 @@ textarea.form-control-lg {
   white-space: nowrap;
 }
 .navbar-nav {
+  align-items: center;
   display: flex;
   flex-direction: column;
   padding-left: 0;
