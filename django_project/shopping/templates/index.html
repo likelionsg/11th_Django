@@ -14,7 +14,7 @@
 <section class="py-5" style="background-color: white;">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {% for item in item_list %}
+            {% for item in paginated_list %}
             <div class="col mb-5">
                 <a style="color:inherit; text-decoration:none;" href="{% url 'detail_page' item.pk %}">
                     <div class="card h-100">
@@ -46,5 +46,39 @@
             {% endfor %}
         </div>
     </div>
+    <ul class="pagination" style="justify-content: center;">
+        <!-- 이전페이지 -->
+        {% if paginated_list.has_previous %} 
+            <li class="page-item">
+                <a class="page-link" href="?page={{ paginated_list.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled"></li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in paginated_list.paginator.page_range %}
+            {% if page_number == paginated_list.number %} 
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if paginated_list.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ paginated_list.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled"></li>
+        {% endif %}
+    </ul>
 </section>
 {% endblock %}
